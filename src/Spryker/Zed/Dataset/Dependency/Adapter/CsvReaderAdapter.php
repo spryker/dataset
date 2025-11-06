@@ -23,7 +23,7 @@ class CsvReaderAdapter implements CsvReaderInterface
      */
     public function __construct(string $path, string $mode)
     {
-        $this->reader = Reader::createFromPath($path, $mode);
+        $this->reader = Reader::createFromPath($path, $mode ?: 'r');
     }
 
     /**
