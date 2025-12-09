@@ -257,7 +257,7 @@ class DatasetTable extends AbstractTable
     protected function generateStatusLabels(array $item): string
     {
         if ($item[static::COL_IS_ACTIVE]) {
-            return $this->generateLabel('Active', 'label-info');
+            return $this->generateLabel('Active', 'label-primary');
         }
 
         return $this->generateLabel('Inactive', 'label-danger');
