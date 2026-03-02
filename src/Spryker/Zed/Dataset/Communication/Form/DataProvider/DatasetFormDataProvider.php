@@ -32,10 +32,6 @@ class DatasetFormDataProvider
      */
     protected $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\Dataset\Persistence\DatasetRepositoryInterface $repository
-     * @param \Spryker\Zed\Dataset\Dependency\Facade\DatasetToLocaleFacadeInterface $localeFacade
-     */
     public function __construct(
         DatasetRepositoryInterface $repository,
         DatasetToLocaleFacadeInterface $localeFacade
@@ -44,11 +40,6 @@ class DatasetFormDataProvider
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param int|null $idDataset
-     *
-     * @return \Generated\Shared\Transfer\DatasetTransfer
-     */
     public function getData(?int $idDataset = null): DatasetTransfer
     {
         if ($idDataset === null) {
@@ -80,9 +71,6 @@ class DatasetFormDataProvider
         return $this->localeFacade->getLocaleCollection();
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\DatasetTransfer
-     */
     protected function createSpyDatasetTransfer(): DatasetTransfer
     {
         $datasetTransfer = new DatasetTransfer();
@@ -97,12 +85,6 @@ class DatasetFormDataProvider
         return $datasetTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDataset $dataset
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     protected function addSpyDatasetLocalizedAttributeTransfers(
         SpyDataset $dataset,
         DatasetTransfer $datasetTransfer

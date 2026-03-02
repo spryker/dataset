@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\DatasetTransfer;
 
 interface WriterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return string
-     */
     public function getCsvByDataset(DatasetTransfer $datasetTransfer): string;
 }

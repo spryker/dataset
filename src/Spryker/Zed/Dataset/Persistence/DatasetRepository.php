@@ -18,11 +18,6 @@ use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
  */
 class DatasetRepository extends AbstractRepository implements DatasetRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return bool
-     */
     public function existsDatasetById(DatasetTransfer $datasetTransfer): bool
     {
         $count = $this->getFactory()->createSpyDatasetRowColumnValueQuery()->filterByFkDataset($datasetTransfer->getIdDataset())->count();
@@ -30,11 +25,6 @@ class DatasetRepository extends AbstractRepository implements DatasetRepositoryI
         return ($count > 0);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return bool
-     */
     public function existsDatasetByName(DatasetTransfer $datasetTransfer): bool
     {
         return ($this->getFactory()->createDatasetQuery()->filterByName($datasetTransfer->getName())->count() > 0);
@@ -80,11 +70,6 @@ class DatasetRepository extends AbstractRepository implements DatasetRepositoryI
         return $this->getFactory()->createDatasetMapper()->getResponseDatasetTransfer($datasetEntity);
     }
 
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDatasetQuery $datasetQuery
-     *
-     * @return \Orm\Zed\Dataset\Persistence\SpyDatasetQuery
-     */
     protected function joinDatasetRelations(SpyDatasetQuery $datasetQuery): SpyDatasetQuery
     {
         $datasetQuery->leftJoinWithSpyDatasetLocalizedAttributes()

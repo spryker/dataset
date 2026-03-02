@@ -20,11 +20,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class DatasetMapper implements DatasetMapperInterface
 {
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDataset $datasetEntity
-     *
-     * @return \Generated\Shared\Transfer\DatasetTransfer
-     */
     public function getResponseDatasetTransfer(SpyDataset $datasetEntity): DatasetTransfer
     {
         $datasetTransfer = new DatasetTransfer();
@@ -35,12 +30,6 @@ class DatasetMapper implements DatasetMapperInterface
         return $datasetTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDataset $datasetEntity
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     protected function appendDatasetLocalizedAttributesTransfers(
         SpyDataset $datasetEntity,
         DatasetTransfer $datasetTransfer
@@ -55,12 +44,6 @@ class DatasetMapper implements DatasetMapperInterface
         }
     }
 
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDataset $datasetEntity
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     protected function appendDatasetRowColumnTransfers(
         SpyDataset $datasetEntity,
         DatasetTransfer $datasetTransfer
@@ -76,11 +59,6 @@ class DatasetMapper implements DatasetMapperInterface
         }
     }
 
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDatasetRowColumnValue $datasetRowColumnValueEntity
-     *
-     * @return \Generated\Shared\Transfer\DatasetRowTransfer
-     */
     protected function createDatasetRowTransfer(SpyDatasetRowColumnValue $datasetRowColumnValueEntity): DatasetRowTransfer
     {
         $datasetRowTransfer = new DatasetRowTransfer();
@@ -89,11 +67,6 @@ class DatasetMapper implements DatasetMapperInterface
         return $datasetRowTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDatasetRowColumnValue $datasetRowColumnValueEntity
-     *
-     * @return \Generated\Shared\Transfer\DatasetColumnTransfer
-     */
     protected function createDatasetColumnTransfer(SpyDatasetRowColumnValue $datasetRowColumnValueEntity): DatasetColumnTransfer
     {
         $datasetColumnTransfer = new DatasetColumnTransfer();
@@ -102,9 +75,6 @@ class DatasetMapper implements DatasetMapperInterface
         return $datasetColumnTransfer;
     }
 
-    /**
-     * @return \Propel\Runtime\ActiveQuery\Criteria
-     */
     protected function getSpyDatasetRowColumnValuesCriteria(): Criteria
     {
         return (new Criteria())->addAscendingOrderByColumn(SpyDatasetRowColumnValueTableMap::COL_ID_ROW_COLUMN_VALUE);

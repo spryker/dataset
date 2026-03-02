@@ -23,49 +23,31 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
  */
 class DatasetPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\Dataset\Persistence\SpyDatasetQuery
-     */
     public function createDatasetQuery(): SpyDatasetQuery
     {
         return SpyDatasetQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Dataset\Persistence\SpyDatasetColumnQuery
-     */
     public function createSpyDatasetColumnQuery(): SpyDatasetColumnQuery
     {
         return SpyDatasetColumnQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Dataset\Persistence\SpyDatasetRowQuery
-     */
     public function createSpyDatasetRowQuery(): SpyDatasetRowQuery
     {
         return SpyDatasetRowQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Dataset\Persistence\SpyDatasetRowColumnValueQuery
-     */
     public function createSpyDatasetRowColumnValueQuery(): SpyDatasetRowColumnValueQuery
     {
         return SpyDatasetRowColumnValueQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\Dataset\Persistence\SpyDatasetLocalizedAttributesQuery
-     */
     public function createSpyDatasetLocalizedAttributesQuery(): SpyDatasetLocalizedAttributesQuery
     {
         return SpyDatasetLocalizedAttributesQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\Dataset\Persistence\Mapper\DatasetMapperInterface
-     */
     public function createDatasetMapper(): DatasetMapperInterface
     {
         return new DatasetMapper();

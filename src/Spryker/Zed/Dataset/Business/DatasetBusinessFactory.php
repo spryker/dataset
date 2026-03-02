@@ -28,9 +28,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
  */
 class DatasetBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\Dataset\Business\Finder\DatasetFinderInterface
-     */
     public function createDatasetFinder(): DatasetFinderInterface
     {
         return new DatasetFinder(
@@ -39,9 +36,6 @@ class DatasetBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Dataset\Business\Saver\DatasetSaverInterface
-     */
     public function createDatasetSaver(): DatasetSaverInterface
     {
         return new DatasetSaver(
@@ -50,33 +44,21 @@ class DatasetBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\Dataset\Business\Reader\ReaderInterface
-     */
     public function createReader(): ReaderInterface
     {
         return new Reader($this->getCsvFactory());
     }
 
-    /**
-     * @return \Spryker\Zed\Dataset\Business\Writer\WriterInterface
-     */
     public function createWriter(): WriterInterface
     {
         return new Writer($this->getCsvFactory());
     }
 
-    /**
-     * @return \Spryker\Zed\Dataset\Business\Resolver\ResolverPathInterface
-     */
     public function createResolverPath(): ResolverPathInterface
     {
         return new ResolverPath();
     }
 
-    /**
-     * @return \Spryker\Zed\Dataset\Business\CsvFactory\CsvFactory
-     */
     public function getCsvFactory(): CsvFactory
     {
         return $this->getProvidedDependency(DatasetDependencyProvider::CSV_ADAPTER);

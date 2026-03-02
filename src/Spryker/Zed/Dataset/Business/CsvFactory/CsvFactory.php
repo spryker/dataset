@@ -15,22 +15,11 @@ use Spryker\Zed\Dataset\Dependency\Adapter\CsvWriterInterface;
 
 class CsvFactory
 {
-    /**
-     * @param string $path
-     * @param string $mode
-     *
-     * @return \Spryker\Zed\Dataset\Dependency\Adapter\CsvReaderInterface
-     */
     public function createCsvReader(string $path, string $mode): CsvReaderInterface
     {
         return new CsvReaderAdapter($path, $mode);
     }
 
-    /**
-     * @param \SplFileObject $splFileObject
-     *
-     * @return \Spryker\Zed\Dataset\Dependency\Adapter\CsvWriterInterface
-     */
     public function createCsvWriter(SplFileObject $splFileObject): CsvWriterInterface
     {
         return new CsvWriterAdapter($splFileObject);

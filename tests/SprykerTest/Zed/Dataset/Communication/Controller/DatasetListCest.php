@@ -23,11 +23,6 @@ use SprykerTest\Zed\Dataset\DatasetObject\DatasetListPage;
  */
 class DatasetListCest
 {
-    /**
-     * @param \SprykerTest\Zed\Dataset\DatasetCommunicationTester $i
-     *
-     * @return void
-     */
     public function breadcrumbIsVisible(DatasetCommunicationTester $i): void
     {
         $i->amOnPage(DatasetListPage::URL);

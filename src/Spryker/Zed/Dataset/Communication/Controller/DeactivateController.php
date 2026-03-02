@@ -44,11 +44,6 @@ class DeactivateController extends AbstractController
      */
     protected const MESSAGE_DATASET_DEACTIVATE_SUCCESS = 'Dataset was deactivated successfully.';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function indexAction(Request $request): RedirectResponse
     {
         $idDataset = $this->castId($request->query->get(static::URL_PARAM_ID_DATASET));
@@ -59,11 +54,6 @@ class DeactivateController extends AbstractController
         return $this->redirectResponse($redirectUrl);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function redirectBack(Request $request): RedirectResponse
     {
         $referer = $request->headers->get(static::REFERER_PARAM);

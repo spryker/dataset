@@ -29,9 +29,6 @@ class DatasetTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testSavesCsvData(): void
     {
         $datasetEntityTransfer = $this->tester->createDatasetTransfer();
@@ -42,9 +39,6 @@ class DatasetTest extends Unit
         $this->assertSame($datasetEntityTransfer->getName(), $datasetTransfer->getName());
     }
 
-    /**
-     * @return void
-     */
     public function testSaveDataset(): void
     {
         $datasetEntityTransfer = $this->tester->createDatasetTransfer();
@@ -55,9 +49,6 @@ class DatasetTest extends Unit
         $this->assertSame($datasetEntityTransfer->getName(), $datasetTransfer->getName());
     }
 
-    /**
-     * @return void
-     */
     public function testExistingDatasetName(): void
     {
         $datasetTransfer = $this->tester->createDatasetTransfer();
@@ -67,9 +58,6 @@ class DatasetTest extends Unit
         $this->assertTrue($dashboardExist);
     }
 
-    /**
-     * @return void
-     */
     public function testCsvByDataset(): void
     {
         $datasetEntityTransfer = $this->tester->createDatasetTransfer();
@@ -82,9 +70,6 @@ class DatasetTest extends Unit
         $this->assertSame($dataContent, $originalFileContent);
     }
 
-    /**
-     * @return void
-     */
     public function testExistingDatasetById(): void
     {
         $datasetEntityTransfer = $this->tester->createDatasetTransfer();
@@ -96,9 +81,6 @@ class DatasetTest extends Unit
         $this->assertSame($datasetEntityTransfer->getName(), $datasetTransfer->getName());
     }
 
-    /**
-     * @return void
-     */
     public function testExistingDatasetByName(): void
     {
         $datasetEntityTransfer = $this->tester->createDatasetTransfer();
@@ -109,9 +91,6 @@ class DatasetTest extends Unit
         $this->assertSame($datasetEntityTransfer->getName(), $datasetTransfer->getName());
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteDataset(): void
     {
         $datasetEntityTransfer = $this->tester->createDatasetTransfer();
@@ -124,9 +103,6 @@ class DatasetTest extends Unit
         $this->tester->getLocator()->dataset()->facade()->getDatasetModelById((new DatasetTransfer())->setIdDataset($datasetId));
     }
 
-    /**
-     * @return void
-     */
     public function testActivateDataset(): void
     {
         $datasetEntityTransfer = $this->tester->createDatasetTransfer();
@@ -137,9 +113,6 @@ class DatasetTest extends Unit
         $this->assertTrue($datasetTransfer->getIsActive());
     }
 
-    /**
-     * @return void
-     */
     public function testGetFilenameByDatasetNameReturnsValidTransfer(): void
     {
         $datasetFilenameTransfer = $this->tester->getLocator()->dataset()->facade()->getFilenameByDatasetName(
@@ -150,11 +123,6 @@ class DatasetTest extends Unit
         $this->assertNotEmpty($datasetFilenameTransfer->getFilename());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetEntityTransfer
-     *
-     * @return \Generated\Shared\Transfer\DatasetTransfer
-     */
     protected function saveDatasetByTransfer(DatasetTransfer $datasetEntityTransfer): DatasetTransfer
     {
         $this->tester->getLocator()->dataset()->facade()->saveDataset($datasetEntityTransfer);

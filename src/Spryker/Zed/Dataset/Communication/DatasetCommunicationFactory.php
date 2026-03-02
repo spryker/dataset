@@ -25,19 +25,11 @@ use Symfony\Component\Form\FormInterface;
  */
 class DatasetCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Zed\Dataset\Communication\Table\DatasetTable
-     */
     public function createDatasetTable(): DatasetTable
     {
         return new DatasetTable($this->getRepository(), $this->getDatasetQuery());
     }
 
-    /**
-     * @param int|null $idDataset
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function getDatasetForm(?int $idDataset = null): FormInterface
     {
         $datasetFormProvider = $this->createDatasetFormDataProvider();
@@ -49,33 +41,21 @@ class DatasetCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return string
-     */
     public function getDatasetLocalizedAttributesForm(): string
     {
         return DatasetLocalizedAttributesForm::class;
     }
 
-    /**
-     * @return \Spryker\Zed\Dataset\Communication\Form\DataProvider\DatasetFormDataProvider
-     */
     public function createDatasetFormDataProvider(): DatasetFormDataProvider
     {
         return new DatasetFormDataProvider($this->getRepository(), $this->getLocaleFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\Dataset\Dependency\Facade\DatasetToLocaleFacadeInterface
-     */
     public function getLocaleFacade(): DatasetToLocaleFacadeInterface
     {
         return $this->getProvidedDependency(DatasetDependencyProvider::FACADE_LOCALE);
     }
 
-    /**
-     * @return \Orm\Zed\Dataset\Persistence\SpyDatasetQuery
-     */
     public function getDatasetQuery(): SpyDatasetQuery
     {
         return $this->getProvidedDependency(DatasetDependencyProvider::PROPEL_DATASET_QUERY);

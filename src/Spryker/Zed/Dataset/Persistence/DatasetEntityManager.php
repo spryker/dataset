@@ -27,11 +27,6 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
 {
     use DatabaseTransactionHandlerTrait;
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     public function updateIsActiveDataset(DatasetTransfer $datasetTransfer): void
     {
         $this->handleDatabaseTransaction(function () use ($datasetTransfer): void {
@@ -41,11 +36,6 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     public function delete(DatasetTransfer $datasetTransfer): void
     {
         $this->handleDatabaseTransaction(function () use ($datasetTransfer): void {
@@ -54,11 +44,6 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     public function saveDataset(DatasetTransfer $datasetTransfer): void
     {
         $this->handleDatabaseTransaction(function () use ($datasetTransfer): void {
@@ -70,11 +55,6 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     protected function update(DatasetTransfer $datasetTransfer): void
     {
         $datasetEntity = $this->findDatasetById($datasetTransfer->getIdDataset());
@@ -82,11 +62,6 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         $this->updateDataset($datasetEntity, $datasetTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     protected function create(DatasetTransfer $datasetTransfer): void
     {
         $this->handleDatabaseTransaction(function () use ($datasetTransfer): void {
@@ -99,12 +74,6 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         });
     }
 
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDataset $datasetEntity
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     protected function updateDataset(SpyDataset $datasetEntity, DatasetTransfer $datasetTransfer): void
     {
         $this->handleDatabaseTransaction(function () use ($datasetEntity, $datasetTransfer): void {
@@ -119,12 +88,6 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         });
     }
 
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDataset $datasetEntity
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     protected function saveDatasetRowColumnValues(SpyDataset $datasetEntity, DatasetTransfer $datasetTransfer): void
     {
         $datasetRowColumnValueTransfers = $datasetTransfer->getDatasetRowColumnValues();
@@ -146,11 +109,6 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetColumnTransfer $datasetColumnTransfer
-     *
-     * @return \Orm\Zed\Dataset\Persistence\SpyDatasetColumn
-     */
     protected function findOrCreateDatasetColumn(DatasetColumnTransfer $datasetColumnTransfer): SpyDatasetColumn
     {
         $datasetColumnEntity = $this->getFactory()->createSpyDatasetColumnQuery()->filterByTitle(
@@ -166,11 +124,6 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         return $datasetColumnEntity;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetRowTransfer $datasetRowTransfer
-     *
-     * @return \Orm\Zed\Dataset\Persistence\SpyDatasetRow
-     */
     protected function findOrCreateDatasetRow(DatasetRowTransfer $datasetRowTransfer): SpyDatasetRow
     {
         $datasetRowEntity = $this->getFactory()->createSpyDatasetRowQuery()->filterByTitle(
@@ -185,21 +138,11 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         return $datasetRowEntity;
     }
 
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDataset $datasetEntity
-     *
-     * @return void
-     */
     protected function removeDatasetRowColumnValues(SpyDataset $datasetEntity): void
     {
         $datasetEntity->getSpyDatasetRowColumnValues()->delete();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return bool
-     */
     protected function checkDatasetExists(DatasetTransfer $datasetTransfer): bool
     {
         $idDataset = $datasetTransfer->getIdDataset();
@@ -211,24 +154,11 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         return $datasetEntity !== null;
     }
 
-    /**
-     * @param int $idDataset
-     *
-     * @return \Orm\Zed\Dataset\Persistence\SpyDataset|null
-     */
     protected function findDatasetById(int $idDataset): ?SpyDataset
     {
         return $this->getFactory()->createDatasetQuery()->filterByIdDataset($idDataset)->findOne();
     }
 
-    /**
-     * @param int $idDataset
-     * @param int $idDatasetColumn
-     * @param int $idDatasetRow
-     * @param string $value
-     *
-     * @return \Orm\Zed\Dataset\Persistence\SpyDatasetRowColumnValue
-     */
     protected function createDatasetRowColumnValue(int $idDataset, int $idDatasetColumn, int $idDatasetRow, string $value): SpyDatasetRowColumnValue
     {
         $datasetRowColumnValue = new SpyDatasetRowColumnValue();
@@ -241,12 +171,6 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         return $datasetRowColumnValue;
     }
 
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDataset $datasetEntity
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     protected function saveDatasetLocalizedAttributes(
         SpyDataset $datasetEntity,
         DatasetTransfer $datasetTransfer
@@ -306,12 +230,6 @@ class DatasetEntityManager extends AbstractEntityManager implements DatasetEntit
         }
     }
 
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDatasetLocalizedAttributes $existingAttribute
-     * @param \Generated\Shared\Transfer\DatasetLocalizedAttributeTransfer $newAttribute
-     *
-     * @return void
-     */
     protected function updateLocalizedAttribute(
         SpyDatasetLocalizedAttributes $existingAttribute,
         DatasetLocalizedAttributeTransfer $newAttribute

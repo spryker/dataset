@@ -23,8 +23,5 @@ interface CsvReaderInterface
      */
     public function getHeader(): array;
 
-    /**
-     * @return \Iterator
-     */
     public function getRecords(): Iterator;
 }

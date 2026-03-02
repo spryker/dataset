@@ -67,12 +67,6 @@ class EditController extends AbstractController
         ]);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     * @param \Symfony\Component\HttpFoundation\File\UploadedFile|null $file
-     *
-     * @return void
-     */
     protected function saveDataset(DatasetTransfer $datasetTransfer, ?UploadedFile $file = null): void
     {
         if ($file instanceof UploadedFile) {

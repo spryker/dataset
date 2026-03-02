@@ -12,10 +12,5 @@ use Orm\Zed\Dataset\Persistence\SpyDataset;
 
 interface DatasetMapperInterface
 {
-    /**
-     * @param \Orm\Zed\Dataset\Persistence\SpyDataset $datasetEntity
-     *
-     * @return \Generated\Shared\Transfer\DatasetTransfer
-     */
     public function getResponseDatasetTransfer(SpyDataset $datasetEntity): DatasetTransfer;
 }

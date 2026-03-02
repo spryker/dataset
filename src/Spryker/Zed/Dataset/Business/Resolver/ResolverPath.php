@@ -16,11 +16,6 @@ class ResolverPath implements ResolverPathInterface
      */
     public const DEFAULT_NAME = 'dataset';
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetFilenameTransfer $datasetFilenameTransfer
-     *
-     * @return \Generated\Shared\Transfer\DatasetFilenameTransfer
-     */
     public function getFilenameByDatasetName(DatasetFilenameTransfer $datasetFilenameTransfer): DatasetFilenameTransfer
     {
         /** @var string $filename */

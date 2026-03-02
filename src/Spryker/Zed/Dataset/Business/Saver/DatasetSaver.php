@@ -24,10 +24,6 @@ class DatasetSaver implements DatasetSaverInterface
      */
     protected $reader;
 
-    /**
-     * @param \Spryker\Zed\Dataset\Persistence\DatasetEntityManagerInterface $entityManager
-     * @param \Spryker\Zed\Dataset\Business\Reader\ReaderInterface $reader
-     */
     public function __construct(
         DatasetEntityManagerInterface $entityManager,
         ReaderInterface $reader
@@ -36,12 +32,6 @@ class DatasetSaver implements DatasetSaverInterface
         $this->reader = $reader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     * @param \Generated\Shared\Transfer\DatasetFilePathTransfer|null $filePathTransfer
-     *
-     * @return void
-     */
     public function save(DatasetTransfer $datasetTransfer, ?DatasetFilePathTransfer $filePathTransfer = null): void
     {
         if ($filePathTransfer !== null && file_exists($filePathTransfer->getFilePath())) {
@@ -52,21 +42,11 @@ class DatasetSaver implements DatasetSaverInterface
         $this->entityManager->saveDataset($datasetTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     public function activateDataset(DatasetTransfer $datasetTransfer): void
     {
         $this->entityManager->updateIsActiveDataset($datasetTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     public function delete(DatasetTransfer $datasetTransfer): void
     {
         $this->entityManager->delete($datasetTransfer);

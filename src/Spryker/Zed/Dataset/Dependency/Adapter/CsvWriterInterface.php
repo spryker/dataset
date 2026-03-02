@@ -9,15 +9,7 @@ namespace Spryker\Zed\Dataset\Dependency\Adapter;
 
 interface CsvWriterInterface
 {
-    /**
-     * @param array $values
-     *
-     * @return int
-     */
     public function insertOne(array $values): int;
 
-    /**
-     * @return string
-     */
     public function getContent(): string;
 }

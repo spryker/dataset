@@ -69,21 +69,12 @@ class DatasetTable extends AbstractTable
      */
     protected $datasetQuery;
 
-    /**
-     * @param \Spryker\Zed\Dataset\Persistence\DatasetRepositoryInterface $repository
-     * @param \Orm\Zed\Dataset\Persistence\SpyDatasetQuery $datasetQuery
-     */
     public function __construct(DatasetRepositoryInterface $repository, SpyDatasetQuery $datasetQuery)
     {
         $this->repository = $repository;
         $this->datasetQuery = $datasetQuery;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $this->setHeaders($config);
@@ -97,11 +88,6 @@ class DatasetTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $queryResults = $this->runQuery($this->datasetQuery, $config);
@@ -113,11 +99,6 @@ class DatasetTable extends AbstractTable
         return $results;
     }
 
-    /**
-     * @param array $item
-     *
-     * @return array
-     */
     protected function mapResults(array $item): array
     {
         $actions = implode(' ', $this->buildLinks($item));
@@ -130,11 +111,6 @@ class DatasetTable extends AbstractTable
         ];
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return void
-     */
     protected function setHeaders(TableConfiguration $config): void
     {
         $config->setHeader([
@@ -145,11 +121,6 @@ class DatasetTable extends AbstractTable
         ]);
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return void
-     */
     protected function setSortableFields(TableConfiguration $config): void
     {
         $config->setSortable([
@@ -159,11 +130,6 @@ class DatasetTable extends AbstractTable
         ]);
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return void
-     */
     protected function setSearchableFields(TableConfiguration $config): void
     {
         $config->setSearchable([
@@ -172,11 +138,6 @@ class DatasetTable extends AbstractTable
         ]);
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return void
-     */
     protected function setRawColumns(TableConfiguration $config): void
     {
         $config->setRawColumns([
@@ -184,11 +145,6 @@ class DatasetTable extends AbstractTable
         ]);
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return void
-     */
     protected function setDefaultSortField(TableConfiguration $config): void
     {
         $config->setDefaultSortField(static::COL_ID_DATASET, static::SORT_DESC);
@@ -225,11 +181,6 @@ class DatasetTable extends AbstractTable
         return $buttons;
     }
 
-    /**
-     * @param array $item
-     *
-     * @return string
-     */
     protected function generateStateChangeButton(array $item): string
     {
         if ($item[static::COL_IS_ACTIVE]) {
@@ -249,11 +200,6 @@ class DatasetTable extends AbstractTable
         );
     }
 
-    /**
-     * @param array $item
-     *
-     * @return string
-     */
     protected function generateStatusLabels(array $item): string
     {
         if ($item[static::COL_IS_ACTIVE]) {

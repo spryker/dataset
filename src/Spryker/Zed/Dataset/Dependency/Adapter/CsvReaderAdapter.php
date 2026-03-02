@@ -17,10 +17,6 @@ class CsvReaderAdapter implements CsvReaderInterface
      */
     protected $reader;
 
-    /**
-     * @param string $path
-     * @param string $mode
-     */
     public function __construct(string $path, string $mode)
     {
         $this->reader = Reader::createFromPath($path, $mode ?: 'r');
@@ -46,9 +42,6 @@ class CsvReaderAdapter implements CsvReaderInterface
         return $this->reader->getHeader();
     }
 
-    /**
-     * @return \Iterator
-     */
     public function getRecords(): Iterator
     {
         return $this->reader->getRecords();

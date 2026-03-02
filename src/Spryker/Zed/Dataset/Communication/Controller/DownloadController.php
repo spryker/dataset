@@ -46,11 +46,6 @@ class DownloadController extends AbstractController
      */
     protected const FILE_EXTENTION = 'csv';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function indexAction(Request $request): Response
     {
         $idDataset = $this->castId($request->query->get(static::URL_PARAM_ID_DATASET));
@@ -59,11 +54,6 @@ class DownloadController extends AbstractController
         return $this->createResponse($datasetTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     protected function createResponse(DatasetTransfer $datasetTransfer): Response
     {
         $content = $this->getFacade()->getCsvByDataset($datasetTransfer);

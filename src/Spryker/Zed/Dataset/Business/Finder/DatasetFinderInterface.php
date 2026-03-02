@@ -11,24 +11,9 @@ use Generated\Shared\Transfer\DatasetTransfer;
 
 interface DatasetFinderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return bool
-     */
     public function existsDatasetByName(DatasetTransfer $datasetTransfer): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return \Generated\Shared\Transfer\DatasetTransfer
-     */
     public function getDatasetModelById(DatasetTransfer $datasetTransfer): DatasetTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return \Generated\Shared\Transfer\DatasetTransfer
-     */
     public function getDatasetModelByName(DatasetTransfer $datasetTransfer): DatasetTransfer;
 }

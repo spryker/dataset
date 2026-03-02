@@ -55,9 +55,6 @@ class Reader implements ReaderInterface
      */
     protected $csvFactory;
 
-    /**
-     * @param \Spryker\Zed\Dataset\Business\CsvFactory\CsvFactory $csvFactory
-     */
     public function __construct(CsvFactory $csvFactory)
     {
         $this->csvFactory = $csvFactory;
@@ -138,11 +135,6 @@ class Reader implements ReaderInterface
         return $datasetColumnTransfers;
     }
 
-    /**
-     * @param string $column
-     *
-     * @return \Generated\Shared\Transfer\DatasetColumnTransfer
-     */
     protected function getDatasetColumnTransfer(string $column): DatasetColumnTransfer
     {
         $datasetColumnTransfer = new DatasetColumnTransfer();
@@ -151,11 +143,6 @@ class Reader implements ReaderInterface
         return $datasetColumnTransfer;
     }
 
-    /**
-     * @param string $row
-     *
-     * @return \Generated\Shared\Transfer\DatasetRowTransfer
-     */
     protected function getDatasetRowTransfer(string $row): DatasetRowTransfer
     {
         $datasetRowTransfer = new DatasetRowTransfer();
@@ -164,13 +151,6 @@ class Reader implements ReaderInterface
         return $datasetRowTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetColumnTransfer $datasetColumnValueTransfer
-     * @param \Generated\Shared\Transfer\DatasetRowTransfer $datasetRowValueTransfer
-     * @param string $value
-     *
-     * @return \Generated\Shared\Transfer\DatasetRowColumnValueTransfer
-     */
     protected function getDatasetRowColumnValueTransfer(
         DatasetColumnTransfer $datasetColumnValueTransfer,
         DatasetRowTransfer $datasetRowValueTransfer,

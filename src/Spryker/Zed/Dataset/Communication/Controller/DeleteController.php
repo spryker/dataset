@@ -29,11 +29,6 @@ class DeleteController extends AbstractController
      */
     protected const REFERER_PARAM = 'referer';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function indexAction(Request $request): RedirectResponse
     {
         $idDataset = $this->castId($request->get(static::URL_PARAM_ID_DATASET));
@@ -42,11 +37,6 @@ class DeleteController extends AbstractController
         return $this->redirectBack($request);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function redirectBack(Request $request): RedirectResponse
     {
         $referer = $request->headers->get(static::REFERER_PARAM);

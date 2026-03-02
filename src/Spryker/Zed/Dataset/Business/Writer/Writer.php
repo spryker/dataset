@@ -19,19 +19,11 @@ class Writer implements WriterInterface
      */
     protected $csvFactory;
 
-    /**
-     * @param \Spryker\Zed\Dataset\Business\CsvFactory\CsvFactory $csvFactory
-     */
     public function __construct(CsvFactory $csvFactory)
     {
         $this->csvFactory = $csvFactory;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return string
-     */
     public function getCsvByDataset(DatasetTransfer $datasetTransfer): string
     {
         $writerAdapter = $this->csvFactory->createCsvWriter(new SplTempFileObject());
@@ -40,12 +32,6 @@ class Writer implements WriterInterface
         return $writerAdapter->getContent();
     }
 
-    /**
-     * @param \Spryker\Zed\Dataset\Dependency\Adapter\CsvWriterInterface $writerAdapter
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     protected function insertDataByTransfer(CsvWriterInterface $writerAdapter, DatasetTransfer $datasetTransfer): void
     {
         $header = [''];

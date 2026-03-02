@@ -60,11 +60,6 @@ class AddController extends AbstractController
         ]);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\File\UploadedFile|null $file
-     *
-     * @return \Generated\Shared\Transfer\DatasetFilePathTransfer
-     */
     protected function getFileTransfer(?UploadedFile $file): DatasetFilePathTransfer
     {
         $filePathTransfer = new DatasetFilePathTransfer();

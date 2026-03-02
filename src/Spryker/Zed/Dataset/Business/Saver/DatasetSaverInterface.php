@@ -12,25 +12,9 @@ use Generated\Shared\Transfer\DatasetTransfer;
 
 interface DatasetSaverInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     * @param \Generated\Shared\Transfer\DatasetFilePathTransfer|null $filePathTransfer
-     *
-     * @return void
-     */
     public function save(DatasetTransfer $datasetTransfer, ?DatasetFilePathTransfer $filePathTransfer = null): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     public function activateDataset(DatasetTransfer $datasetTransfer): void;
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return void
-     */
     public function delete(DatasetTransfer $datasetTransfer): void;
 }

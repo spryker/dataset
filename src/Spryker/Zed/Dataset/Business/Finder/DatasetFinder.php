@@ -23,41 +23,22 @@ class DatasetFinder implements DatasetFinderInterface
      */
     protected $entityManager;
 
-    /**
-     * @param \Spryker\Zed\Dataset\Persistence\DatasetRepositoryInterface $repository
-     * @param \Spryker\Zed\Dataset\Persistence\DatasetEntityManagerInterface $entityManager
-     */
     public function __construct(DatasetRepositoryInterface $repository, DatasetEntityManagerInterface $entityManager)
     {
         $this->repository = $repository;
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return bool
-     */
     public function existsDatasetByName(DatasetTransfer $datasetTransfer): bool
     {
         return $this->repository->existsDatasetByName($datasetTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return \Generated\Shared\Transfer\DatasetTransfer
-     */
     public function getDatasetModelById(DatasetTransfer $datasetTransfer): DatasetTransfer
     {
         return $this->repository->getDatasetByIdWithRelation($datasetTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetTransfer
-     *
-     * @return \Generated\Shared\Transfer\DatasetTransfer
-     */
     public function getDatasetModelByName(DatasetTransfer $datasetTransfer): DatasetTransfer
     {
         return $this->repository->getDatasetByNameWithRelation($datasetTransfer);

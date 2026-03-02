@@ -61,11 +61,6 @@ class DatasetBusinessTester extends Actor
         return $datasetEntity;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\DatasetTransfer $datasetEntity
-     *
-     * @return void
-     */
     protected function addDatasetLocalizedAttributes(DatasetTransfer $datasetEntity): void
     {
         $localizedAttributes = $this->getLocator()->locale()->facade()->getAvailableLocales();

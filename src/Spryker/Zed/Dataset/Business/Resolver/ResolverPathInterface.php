@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\DatasetFilenameTransfer;
 
 interface ResolverPathInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\DatasetFilenameTransfer $datasetFilenameTransfer
-     *
-     * @return \Generated\Shared\Transfer\DatasetFilenameTransfer
-     */
     public function getFilenameByDatasetName(DatasetFilenameTransfer $datasetFilenameTransfer): DatasetFilenameTransfer;
 }
