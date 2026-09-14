@@ -141,14 +141,14 @@ class DatasetForm extends AbstractType
     {
         $constraints = $this->getFieldDefaultConstraints();
 
-        $constraints[] = new Callback([
-            'callback' => function ($name, ExecutionContextInterface $contextInterface): void {
+        $constraints[] = new Callback(
+            callback: function ($name, ExecutionContextInterface $contextInterface): void {
                 if ($this->getFacade()->existsDatasetByName((new DatasetTransfer())->setName($name))) {
                     $contextInterface->addViolation('The name already exists.');
                 }
             },
-            'groups' => [static::GROUP_UNIQUE_DATASET_NAME_CHECK],
-        ]);
+            groups: [static::GROUP_UNIQUE_DATASET_NAME_CHECK],
+        );
 
         return $constraints;
     }
